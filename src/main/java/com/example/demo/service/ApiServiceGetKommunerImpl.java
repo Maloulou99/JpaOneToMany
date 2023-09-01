@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApiServiceGetKommunerImpl implements ApiServiceGetKommuner{
@@ -39,6 +40,21 @@ public class ApiServiceGetKommunerImpl implements ApiServiceGetKommuner{
         List<Kommune> kommuner = kommuneResponse.getBody();
         saveKommune(kommuner);
         return kommuner;
+    }
+
+    @Override
+    public Optional<Kommune> findByKode(String kode) {
+        return kommuneRespository.findById(kode);
+    }
+
+    @Override
+    public Kommune save(Kommune kommune) {
+        return kommuneRespository.save(kommune);
+    }
+
+    @Override
+    public void delete(Kommune kommune) {
+        kommuneRespository.delete(kommune);
     }
 
 }
