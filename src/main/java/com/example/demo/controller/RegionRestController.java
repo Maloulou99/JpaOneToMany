@@ -28,7 +28,7 @@ public class RegionRestController {
         return regionList;
     }
 
-    //Eksempel med DTO-klasse, kun få det udskrevet man ønsker
+    //Eksempel med DTO-klasse, så jeg kun kan se region navnene
     /*
     @GetMapping("/getregionernavn")
     public List<RegionNameDTO> getRegioner() {
@@ -79,6 +79,21 @@ public class RegionRestController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Region med kode " + kode + " blev ikke fundet i databasen.");
         }
-
     }
+
+    @GetMapping("/region/{kode}/kommunenavne")
+    public ResponseEntity<List<String>> getKommuneNavneForRegion(@PathVariable String kode) {
+        Optional<Region> regionOptional = apiServiceGetRegioner.findByKode(kode);
+
+        if (regionOptional.isPresent()) {
+            Region region = regionOptional.get();
+            List<String> kommuneNavne = apiServiceGetRegioner.getKommuneNavne(region);
+
+            return ResponseEntity.ok(kommuneNavne);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

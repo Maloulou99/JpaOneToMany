@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Setter
@@ -23,4 +25,6 @@ public class Region {
     @OneToMany(mappedBy = "region", cascade = CascadeType.REMOVE)
     @JsonBackReference
     private Set<Kommune> kommuner = new HashSet<>();
+
+
 }

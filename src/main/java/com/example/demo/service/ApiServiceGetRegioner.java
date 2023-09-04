@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Kommune;
 import com.example.demo.model.Region;
 
 import java.util.List;
@@ -11,5 +12,7 @@ public interface ApiServiceGetRegioner {
     Region save(Region region);
 
     void delete(Region region);
+
+    public List<String> getKommuneNavne(Region region);
 
 }

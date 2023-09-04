@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.Repository.RegionRepository;
+import com.example.demo.model.Kommune;
 import com.example.demo.model.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class  ApiServiceGetRegionerImpl implements ApiServiceGetRegioner {
@@ -55,5 +57,14 @@ public class  ApiServiceGetRegionerImpl implements ApiServiceGetRegioner {
     public void delete(Region region) {
         regionRepository.delete(region);
     }
+
+    @Override
+    public List<String> getKommuneNavne(Region region) {
+        return region.getKommuner().stream()
+                .map(Kommune::getNavn)
+                .collect(Collectors.toList());
+    }
+
+
 
 }
