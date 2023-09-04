@@ -17,6 +17,7 @@ public class Kommune {
     private String kode;
     private String navn;
     private String href;
+    private boolean isSlettet;
 
     @ManyToOne
     @JoinColumn(name = "region", referencedColumnName = "kode")

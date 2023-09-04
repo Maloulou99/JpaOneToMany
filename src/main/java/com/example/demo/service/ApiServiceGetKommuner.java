@@ -13,4 +13,5 @@ public interface ApiServiceGetKommuner {
     Kommune save(Kommune kommune);
 
     void delete(Kommune kommune);
+    boolean isDeleted(Kommune kommune);
 }

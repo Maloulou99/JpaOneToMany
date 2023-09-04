@@ -57,6 +57,12 @@ public class ApiServiceGetKommunerImpl implements ApiServiceGetKommuner{
         kommuneRespository.delete(kommune);
     }
 
+    @Override
+    public boolean isDeleted(Kommune kommune) {
+       return kommune.isSlettet();
+    }
+
+
 }
 
 

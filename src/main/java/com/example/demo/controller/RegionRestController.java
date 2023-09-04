@@ -29,7 +29,6 @@ public class RegionRestController {
     }
 
     //Eksempel med DTO-klasse, kun få det udskrevet man ønsker
-
     /*
     @GetMapping("/getregionernavn")
     public List<RegionNameDTO> getRegioner() {

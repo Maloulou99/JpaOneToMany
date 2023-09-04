@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class KommuneRestController {
@@ -20,13 +21,15 @@ public class KommuneRestController {
 
     @GetMapping("/getkommuner")
     public List<Kommune> getKommuner() {
-        return apiServiceGetKommuner.getKommuner();
+        List<Kommune> kommuneList = apiServiceGetKommuner.getKommuner();
+        kommuneList = kommuneList.stream()
+                .filter(kommune -> !kommune.isSlettet())
+                .collect(Collectors.toList());
+        return kommuneList;
     }
 
 
     //Eksempel med DTO-klasse, kun få det udskrevet man ønsker
-
-
    /* @GetMapping("/getkommunenavn")
     public List<RegionNameDTO> getRegioner() {
         List<Region> regionList = apiServiceGetRegioner.getRegioner();
