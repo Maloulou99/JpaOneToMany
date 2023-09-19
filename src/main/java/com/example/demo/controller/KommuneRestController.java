@@ -2,19 +2,17 @@ package com.example.demo.controller;
 
 import com.example.demo.DTO.KommuneAttributeDTO;
 import com.example.demo.model.Kommune;
-import com.example.demo.model.Region;
 import com.example.demo.service.ApiServiceGetKommuner;
-import com.example.demo.service.ApiServiceGetRegioner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static org.hibernate.Hibernate.map;
 
 @RestController
 public class KommuneRestController {
@@ -89,6 +87,8 @@ public class KommuneRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Kommune med kode " + kode + " blev ikke fundet i databasen.");
         }
     }
+
+
 
 
 }

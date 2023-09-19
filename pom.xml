@@ -41,11 +41,13 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.8</version> <!-- Erstat versionen med den nyeste version af GSON -->
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

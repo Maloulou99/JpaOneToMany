@@ -4,6 +4,7 @@ import com.example.demo.model.Region;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+
 public class KommuneAttributeDTO {
     private String kode;
     private String navn;

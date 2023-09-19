@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drop Down</title>
+</head>
+<body>
+<form>
+    <label for="region">Vælg en region</label>
+    <select id="region" name="region"></select>
+    <option value="option"></option>
+</form>
+
+<script>
+    const regionDropdown = document.getElementById("region");
+
+    fetch("https://api.dataforsyningen.dk/regioner")
+        .then(response => response.json())
+        .then(regionerFraAPI => {
+            regionDropdown.innerHTML = "";
+            regionerFraAPI.forEach(region => {
+                const option = document.createElement("option");
+
+                option.innerHTML = `<option value="${region.id}">${region.navn}</option>`;
+
+                regionDropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Fejl:", error));
+</script>
+</body>
+</html>

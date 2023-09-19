@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Kommune;
-import com.example.demo.model.Region;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public interface ApiServiceGetKommuner {
+
     List<Kommune> getKommuner();
 
     Optional<Kommune> findByKode(String kode);
@@ -14,4 +13,5 @@ public interface ApiServiceGetKommuner {
 
     void delete(Kommune kommune);
     boolean isDeleted(Kommune kommune);
+
 }
