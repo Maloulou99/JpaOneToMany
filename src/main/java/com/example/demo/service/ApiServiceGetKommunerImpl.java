@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.Repository.KommuneRespository;
 import com.example.demo.model.Kommune;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -10,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -39,6 +36,7 @@ public class ApiServiceGetKommunerImpl implements ApiServiceGetKommuner{
                 restTemplate.exchange(kommuneUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<Kommune>>(){
                 });
         List<Kommune> kommuner = kommuneResponse.getBody();
+        assert kommuner != null;
         saveKommune(kommuner);
         return kommuner;
     }

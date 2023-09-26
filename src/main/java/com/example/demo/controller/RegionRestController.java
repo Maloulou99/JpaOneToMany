@@ -63,20 +63,16 @@ public class RegionRestController {
 
 
     @DeleteMapping("/deleteregion/{kode}")
-    public ResponseEntity<String> deleteRegion(@PathVariable String kode) {
-
+    public void deleteRegion(@PathVariable String kode) {
         Optional<Region> existingRegionOptional = apiServiceGetRegioner.findByKode(kode);
-
         if (existingRegionOptional.isPresent()) {
             Region existingRegion = existingRegionOptional.get();
-
             apiServiceGetRegioner.delete(existingRegion);
-
-            return ResponseEntity.ok("Region med kode " + kode + " er blevet slettet.");
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Region med kode " + kode + " blev ikke fundet i databasen.");
+            throw new RuntimeException("Region med kode " + kode + " blev ikke fundet i databasen.");
         }
     }
+
 
     @GetMapping("/region/{kode}/kommunenavne")
     public ResponseEntity<List<String>> getKommuneNavneForRegion(@PathVariable String kode) {
@@ -91,6 +87,8 @@ public class RegionRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 
 
 }

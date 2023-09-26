@@ -18,5 +18,4 @@ public interface ApiServiceGetRegioner {
 
     List<String> getKommuneNavne(Region region);
 
-
 }
